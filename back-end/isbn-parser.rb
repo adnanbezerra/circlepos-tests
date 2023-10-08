@@ -1,39 +1,41 @@
-def getFullIsbn(isbn)
-  sum = 0;
+class Isbn_parser
+  def getFullIsbn(isbn)
+    sum = 0
 
-  for i in 0...isbn.length
-    if(i % 2 == 0)
-      sum += (isbn[i].to_i * 1);
-    else
-      sum += (isbn[i].to_i * 3);
+    for i in 0...isbn.length
+      sum += if i % 2 == 0
+        (isbn[i].to_i * 1)
+      else 
+        (isbn[i].to_i * 3)
+      end
     end
+
+    mod = sum % 10
+    finalResult = 10 - mod
+
+    return finalResult
   end
 
-  mod = sum % 10;
-  finalResult = 10 - mod;
-
-  return finalResult;
-end
-
-def isIsbnValid(isbn) 
-  if (isbn.length != 12) 
-    return false;
-  else
-     return true;
+  def isIsbnValid?(isbn) 
+    isbn.length == 12 ? true : false
   end
 end
 
-puts "Welcome to the ISBN3 barcode calculator!";
-puts "Insert the ISBN number: ";
+class Main
+  puts "Welcome to the ISBN3 barcode calculator!"
+  puts "Insert the ISBN number: "
 
-isbn = gets.chomp;
+  parser = Isbn_parser.new
 
-while !isIsbnValid(isbn) do
-  puts "Insert a valid ISBN number!";
-  puts "Try again.";
-  isbn = gets.chomp;
-end
+  isbn = gets.chomp
 
-fullIsbn = getFullIsbn(isbn);
+  until parser.isIsbnValid?(isbn) do
+    puts "Insert a valid ISBN number!"
+    puts "Try again."
+    isbn = gets.chomp
+  end
 
-puts "The full ISBN number is #{isbn}#{fullIsbn}";
+  fullIsbn = parser.getFullIsbn(isbn)
+
+  puts "The full ISBN number is #{isbn}#{fullIsbn}"
+end 
