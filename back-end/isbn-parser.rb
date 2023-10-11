@@ -1,41 +1,42 @@
-class Isbn_parser
-  def getFullIsbn(isbn)
+class IsbnParser
+  def get_full_isbn(isbn)
     sum = 0
 
-    for i in 0...isbn.length
-      sum += if i % 2 == 0
-        (isbn[i].to_i * 1)
-      else 
-        (isbn[i].to_i * 3)
-      end
+    isbn.each_char.with_index do |char, index|
+      factor = index.even? ? 1 : 3
+      sum += char.to_i * factor
     end
 
     mod = sum % 10
-    finalResult = 10 - mod
+    final_result = 10 - mod
 
-    return finalResult
+    final_result
   end
 
-  def isIsbnValid?(isbn) 
-    isbn.length == 12 ? true : false
+  def isbn_valid?(isbn)
+    isbn.length == 12
   end
 end
 
 class Main
-  puts "Welcome to the ISBN3 barcode calculator!"
-  puts "Insert the ISBN number: "
+  def self.run
+    puts "Welcome to the ISBN3 barcode calculator!"
+    puts "Insert the ISBN number: "
 
-  parser = Isbn_parser.new
+    parser = IsbnParser.new
 
-  isbn = gets.chomp
-
-  until parser.isIsbnValid?(isbn) do
-    puts "Insert a valid ISBN number!"
-    puts "Try again."
     isbn = gets.chomp
+
+    until parser.isbn_valid?(isbn)
+      puts "Insert a valid ISBN number!"
+      puts "Try again."
+      isbn = gets.chomp
+    end
+
+    full_isbn = parser.get_full_isbn(isbn)
+
+    puts "The full ISBN number is #{isbn}#{full_isbn}"
   end
+end
 
-  fullIsbn = parser.getFullIsbn(isbn)
-
-  puts "The full ISBN number is #{isbn}#{fullIsbn}"
-end 
+Main.run
