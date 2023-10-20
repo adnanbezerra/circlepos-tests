@@ -8,7 +8,7 @@ export default function TopBar() {
         <Logo src="https://circlepos.com/wp-content/uploads/2020/05/circlepos.com-normal.png" alt="" />
       </Link>
 
-      Cart
+      CART
     </Container>
   )
 }
