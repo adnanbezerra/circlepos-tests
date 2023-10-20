@@ -12,7 +12,7 @@ function App() {
         <TopBar />
 
         <Routes>
-          <Route path={'/'} element={MainPage} />
+          <Route path={'/'} element={<MainPage />} />
         </Routes>
       </BrowserRouter>
     </>
