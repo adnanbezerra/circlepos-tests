@@ -10,7 +10,7 @@ function useGetBooksFromAPI() {
 
     axios.get(`${API_URL}/books/`)
       .then(response => {
-        setData(response.data);
+        setData(response.data.books);
       })
       .catch(error => {
         setError(error);
