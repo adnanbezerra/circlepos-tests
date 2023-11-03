@@ -6,13 +6,7 @@ export const Container = styled.div`
   padding: 25px 15%;
   box-sizing: border-box;
   flex-direction: column;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
+  overflow-x: hide;
 `
 
 export const Title = styled.h1`
@@ -27,7 +21,13 @@ export const SecondTitle = styled.h2`
 export const BooksDiv = styled.div`
   display: flex;
   height: fit-content;
-  width: fit-content;
+  width: 100%;
   margin-bottom: 10px;
-  overflow-x: scroll;
+  overflow: scroll;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
