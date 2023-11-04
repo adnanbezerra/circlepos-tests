@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../mock/apiUrl';
 
-function useGetBookInfoFromAPI({index}) {
+function useGetBookInfoFromAPI(index) {
   const [data, setData] = useState([{}]);
   const [error, setError] = useState(null);
 
