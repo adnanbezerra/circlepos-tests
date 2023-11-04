@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../mock/apiUrl';
 
-function useGetBooksFromAPI({index}) {
+function useGetBookInfoFromAPI({index}) {
   const [data, setData] = useState([{}]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
 
-    axios.get(`${API_URL}/book/${index}`)
+    axios.get(`${API_URL}/books/${index}`)
       .then(response => {
-        setData(response.data);
+        setData(response.data.book);
       })
       .catch(error => {
         setError(error);
@@ -22,4 +22,4 @@ function useGetBooksFromAPI({index}) {
   return { data, error };
 }
 
-export default useGetBooksFromAPI;
+export default useGetBookInfoFromAPI;
