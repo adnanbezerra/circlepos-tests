@@ -9,7 +9,7 @@ export default function BottomBar() {
 
       <Container>
         <ContentDivisory>
-          ABOUT CIRCLE
+          ABOUT CIRCLE <br style={{marginBottom: "20px"}}/>
 
           Circle is a complete point of sale, stock management and online sales solution for booksellers. It is an ideal platform for bricks and mortar stores that want to be online, but don’t want the hassle of managing a website and the shop floor independently.
         </ContentDivisory>
