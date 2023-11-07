@@ -9,14 +9,7 @@ import { CartContext } from "./context/CartContext";
 import CartPage from "./pages/CartPage/CartPage";
 
 function App() {
-  const [cart, setCart] = useState([{
-    "id": 9007199254740991,
-    "title": "title",
-    "author": "author",
-    "isbn": "isbn",
-    "price": 0.1,
-    "availableStock": 0
-  }]);
+  const [cart, setCart] = useState([]);
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>
