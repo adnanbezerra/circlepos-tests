@@ -6,9 +6,17 @@ import BottomBar from "./components/BottomBar/BottomBar";
 import BookPage from "./pages/BookPage/BookPage";
 import { useState } from "react";
 import { CartContext } from "./context/CartContext";
+import CartPage from "./pages/CartPage/CartPage";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([{
+    "id": 9007199254740991,
+    "title": "title",
+    "author": "author",
+    "isbn": "isbn",
+    "price": 0.1,
+    "availableStock": 0
+  }]);
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>
@@ -20,6 +28,7 @@ function App() {
         <Routes>
           <Route path={'/'} element={<MainPage />} />
           <Route path={'/book/:id'} element={<BookPage />} />
+          <Route path={'my-cart'} element={<CartPage />} />
         </Routes>
 
         <BottomBar />
